@@ -1,0 +1,45 @@
+# Compiled source files
+*.class
+*.o
+*.so
+
+# Packages
+*.jar
+*.war
+*.ear
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Node.js dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# Build directories
+build/
+dist/
+
+# Others
+.cache
+.temp
+
+ML_Models/transfuser-2022/model_ckpt/
+ML_Models/LAV/weights/
