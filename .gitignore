@@ -43,3 +43,4 @@ dist/
 
 ML_Models/transfuser-2022/model_ckpt/
 ML_Models/LAV/weights/
+imgdata/

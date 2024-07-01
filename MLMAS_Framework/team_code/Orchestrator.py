@@ -8,13 +8,25 @@ import math
 import os
 import pandas as pd
 import time
-
-
+import numpy as np
+import cv2
+from PIL import Image
 ml_agent = os.getenv('ML_MODEL')
 result_file_path = (os.getenv('CHECKPOINT_ENDPOINT').replace(".json","") + "_jason_metrics.csv")
 
 exec(open(ml_agent).read())
 class_name = get_entry_point()
+
+def get_front_cam():
+    global class_name
+    if class_name == "LAVAgent": # LAV model
+        return "RGB_1"
+    elif class_name == "HybridAgent": # transfuser model
+        return "rgb_front"
+    raise Exception("not found front camera!")
+
+FRONT_CAM = get_front_cam()
+
 def get_entry_point():
     return 'Orchestrator'
 
@@ -91,8 +103,7 @@ class Orchestrator(AutonomousAgent):
             # Add speedometer
             sensors.append({'type': 'sensor.speedometer', 'id': self.speedometer_id})
             # print_log("(",self.speedometer_id,") speedometer is added")
-
-
+            
         return sensors
 
     def setup(self, path_to_conf_file):
@@ -112,7 +123,11 @@ class Orchestrator(AutonomousAgent):
         self.num_frames = 1
         self.ml_model.destroy()
         self._vehicle = None
-
+    def process_image(self, image):
+        
+        # Process the image (e.g., save, display, or analyze)
+        cv2.imshow("Camera", image)
+        cv2.waitKey(1)
     def run_step(self, input_data, timestamp):
         if self.ml_model._global_plan is None:
             self.ml_model._global_plan = self._global_plan
@@ -128,14 +143,18 @@ class Orchestrator(AutonomousAgent):
         self.control_repeat -= 1
         if (self.control_repeat > 0):
             return self.last_control
-
+        import datetime
+        # Get the current timestamp
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         # if self.num_frames < 250: # or self.num_frames == 1450:
         #     return self.ml_model.run_step(input_data, timestamp)
         _, lidar = input_data.get(self.lidar_id)
         _, ego   = input_data.get(self.speedometer_id)
         ego_vehicle_speed      = ego.get('speed')
-
-
+        _,front_rgb = input_data.get(FRONT_CAM)
+        print(np.shape(front_rgb))
+        image = Image.fromarray(front_rgb, 'RGBA')
+        image.save(f'/home/ddmonster/MLMAS_Project/imgdata/saved_image_{FRONT_CAM}_{timestamp}.png')
         #========= Ego Vehicle info ===================
         if self.ego_car_diminsions == None:
             self.ego_car_diminsions = self._vehicle.bounding_box.extent

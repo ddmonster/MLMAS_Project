@@ -2,7 +2,7 @@
     "_checkpoint": {
         "global_record": {},
         "progress": [
-            20,
+            3,
             36
         ],
         "records": [
@@ -11,30 +11,26 @@
                 "infractions": {
                     "collisions_layout": [],
                     "collisions_pedestrian": [],
-                    "collisions_vehicle": [
-                        "Agent collided against object with type=vehicle.tesla.model3 and id=323 at (x=336.361, y=315.778, z=0.033)"
-                    ],
+                    "collisions_vehicle": [],
                     "outside_route_lanes": [],
                     "red_light": [],
                     "route_dev": [],
                     "route_timeout": [],
                     "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=336.893, y=320.042, z=0.033)"
-                    ]
+                    "vehicle_blocked": []
                 },
                 "meta": {
-                    "duration_game": 607.6500090546906,
-                    "duration_system": 5463.773198366165,
+                    "duration_game": 0.2500000037252903,
+                    "duration_system": 3.0326101779937744,
                     "route_length": 1130.24134093902
                 },
                 "route_id": "RouteScenario_0",
                 "scores": {
-                    "score_composed": 1.5374223731761598,
-                    "score_penalty": 0.6,
-                    "score_route": 2.5623706219602664
+                    "score_composed": 0.0,
+                    "score_penalty": 1.0,
+                    "score_route": 0
                 },
-                "status": "Failed - Agent got blocked"
+                "status": "Failed"
             },
             {
                 "index": 1,
@@ -47,22 +43,20 @@
                     "route_dev": [],
                     "route_timeout": [],
                     "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=334.695, y=12.466, z=0.033)"
-                    ]
+                    "vehicle_blocked": []
                 },
                 "meta": {
-                    "duration_game": 346.3500051610172,
-                    "duration_system": 3246.4652240276337,
+                    "duration_game": 1.1000000163912773,
+                    "duration_system": 4.951554775238037,
                     "route_length": 1014.5683614271728
                 },
                 "route_id": "RouteScenario_1",
                 "scores": {
-                    "score_composed": 2.5416179111621626,
+                    "score_composed": 0.0,
                     "score_penalty": 1.0,
-                    "score_route": 2.5416179111621626
+                    "score_route": 0
                 },
-                "status": "Failed - Agent got blocked"
+                "status": "Failed"
             },
             {
                 "index": 2,
@@ -75,498 +69,20 @@
                     "route_dev": [],
                     "route_timeout": [],
                     "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=338.783, y=175.189, z=0.033)"
-                    ]
+                    "vehicle_blocked": []
                 },
                 "meta": {
-                    "duration_game": 184.15000274404883,
-                    "duration_system": 1721.1707963943481,
+                    "duration_game": 2.600000038743019,
+                    "duration_system": 9.890241622924805,
                     "route_length": 893.8872268174996
                 },
                 "route_id": "RouteScenario_2",
                 "scores": {
                     "score_composed": 0.0,
                     "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 3,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=92.418, y=315.3, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1330.8807373046875,
-                    "route_length": 731.4965169470098
-                },
-                "route_id": "RouteScenario_3",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
                     "score_route": 0
                 },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 4,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=30.79, y=-1.976, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 189.9000028297305,
-                    "duration_system": 1714.2530841827393,
-                    "route_length": 936.7810583237248
-                },
-                "route_id": "RouteScenario_4",
-                "scores": {
-                    "score_composed": 2.2781416434858945,
-                    "score_penalty": 1.0,
-                    "score_route": 2.2781416434858945
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 5,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=158.032, y=39.202, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1098.9862215518951,
-                    "route_length": 685.6662543269069
-                },
-                "route_id": "RouteScenario_5",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 6,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=132.147, y=202.158, z=0.253)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1146.4115068912506,
-                    "route_length": 1010.4496438346772
-                },
-                "route_id": "RouteScenario_6",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 7,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=-3.422, y=143.961, z=0.253)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 186.85000278428197,
-                    "duration_system": 1818.059255361557,
-                    "route_length": 974.0864898139865
-                },
-                "route_id": "RouteScenario_7",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 8,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=25.493, y=105.475, z=0.253)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1836.1644287109375,
-                    "route_length": 820.597062684722
-                },
-                "route_id": "RouteScenario_8",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 9,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=25.493, y=105.475, z=0.253)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1759.3242888450623,
-                    "route_length": 820.597062684722
-                },
-                "route_id": "RouteScenario_9",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 10,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=-3.456, y=179.24, z=0.253)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1371.1614665985107,
-                    "route_length": 972.5033469980193
-                },
-                "route_id": "RouteScenario_10",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 11,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=193.428, y=175.844, z=0.253)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 325.40000484883785,
-                    "duration_system": 3064.8958983421326,
-                    "route_length": 872.1007709112279
-                },
-                "route_id": "RouteScenario_11",
-                "scores": {
-                    "score_composed": 0.12176050263829309,
-                    "score_penalty": 1.0,
-                    "score_route": 0.12176050263829309
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 12,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=-117.584, y=136.653, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 196.05000292137265,
-                    "duration_system": 1946.255765914917,
-                    "route_length": 2303.3805465319365
-                },
-                "route_id": "RouteScenario_12",
-                "scores": {
-                    "score_composed": 0.08531596212229962,
-                    "score_penalty": 1.0,
-                    "score_route": 0.08531596212229962
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 13,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=146.771, y=58.727, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 483.95000721141696,
-                    "duration_system": 3826.065680742264,
-                    "route_length": 1748.053394390975
-                },
-                "route_id": "RouteScenario_13",
-                "scores": {
-                    "score_composed": 3.7918131611543466,
-                    "score_penalty": 1.0,
-                    "score_route": 3.7918131611543466
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 14,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=-55.892, y=-135.966, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 187.6500027962029,
-                    "duration_system": 1811.9383599758148,
-                    "route_length": 1436.210995252817
-                },
-                "route_id": "RouteScenario_14",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 15,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=-103.303, y=132.755, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 184.2000027447939,
-                    "duration_system": 1721.2277545928955,
-                    "route_length": 1870.88511243804
-                },
-                "route_id": "RouteScenario_15",
-                "scores": {
-                    "score_composed": 0.16328476725644242,
-                    "score_penalty": 1.0,
-                    "score_route": 0.16328476725644242
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 16,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=-149.014, y=11.433, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1214.618534564972,
-                    "route_length": 1869.9662505823853
-                },
-                "route_id": "RouteScenario_16",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 17,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=37.724, y=3.597, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 185.35000276193023,
-                    "duration_system": 1838.634843826294,
-                    "route_length": 1556.535843155346
-                },
-                "route_id": "RouteScenario_17",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0.0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 18,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=14.7, y=-188.227, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1960.2020347118378,
-                    "route_length": 2069.435963460894
-                },
-                "route_id": "RouteScenario_18",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0
-                },
-                "status": "Failed - Agent got blocked"
-            },
-            {
-                "index": 19,
-                "infractions": {
-                    "collisions_layout": [],
-                    "collisions_pedestrian": [],
-                    "collisions_vehicle": [],
-                    "outside_route_lanes": [],
-                    "red_light": [],
-                    "route_dev": [],
-                    "route_timeout": [],
-                    "stop_infraction": [],
-                    "vehicle_blocked": [
-                        "Agent got blocked at (x=14.7, y=-188.227, z=0.033)"
-                    ]
-                },
-                "meta": {
-                    "duration_game": 180.05000268295407,
-                    "duration_system": 1594.114021062851,
-                    "route_length": 2058.955397544899
-                },
-                "route_id": "RouteScenario_19",
-                "scores": {
-                    "score_composed": 0.0,
-                    "score_penalty": 1.0,
-                    "score_route": 0
-                },
-                "status": "Failed - Agent got blocked"
+                "status": "Failed"
             }
         ]
     },
