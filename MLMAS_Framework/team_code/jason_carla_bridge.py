@@ -291,7 +291,14 @@ class JsonProcessing:
                                 "d": str(round(self.ml_mas_agent.traffic_light_detection[4],3)),
                                 "inBox": (1 if self.ml_mas_agent.traffic_light_detection[5] else 0)
                                  }
-
+        #send lane detect data
+        if self.ml_mas_agent.lane_pos != (-1,-1) and self.ml_mas_agent.last_lane_pos != (-1,-1):
+            print("send lane data")
+            final_json["lane_pos"] = {"left":self.ml_mas_agent.lane_pos[0],
+                                      "right":self.ml_mas_agent.lane_pos[1],
+                                      "last_left":self.ml_mas_agent.last_lane_pos[0],
+                                      "last_right": self.ml_mas_agent.last_lane_pos[1]}
+            
         return self.JSON_pack(name="sensors", jsn= final_json)
 
     def JSON_pack(self, name, jsn = None):

@@ -4,6 +4,7 @@ from agents.navigation.basic_agent import BasicAgent
 from leaderboard.autoagents.autonomous_agent import AutonomousAgent
 from agents.tools.misc import is_within_distance_ahead
 from srunner.scenariomanager.carla_data_provider import CarlaDataProvider
+from lane_detection import LaneDetection
 import math
 import os
 import pandas as pd
@@ -29,17 +30,36 @@ FRONT_CAM = get_front_cam()
 
 def get_entry_point():
     return 'Orchestrator'
+class CountRun:
+    def __init__(self,count) -> None:
+        self.count = count
+        self._count = count
+    def register(self,func):
+        self.func = func
+
+    def call(self):
+        if self._count == 0:
+            self.func() 
+            self.reset()
+        else:
+            self._count -= 1
+    def reset(self):
+        self._count = self.count
+
 
 is_print_log_enabled = True  ## enable for # DEBUG
 class Orchestrator(AutonomousAgent):
 
     def __init__(self, path_to_conf_file):
         ml_class = eval(class_name)
+        self.lane_detect_model = LaneDetection()
+        self.last_lane_pos = (-1,-1)
+        self.lane_pos = (-1,-1)
         self.ml_model = ml_class(path_to_conf_file)
         #  current global plans to reach a destination
         self.num_frames = 0
         self._global_plan_world_coord = self.ml_model._global_plan_world_coord
-
+        self.count_run = CountRun(10)
         # this data structure will contain all sensor data
         self.sensor_interface = self.ml_model.sensor_interface
 
@@ -152,9 +172,15 @@ class Orchestrator(AutonomousAgent):
         _, ego   = input_data.get(self.speedometer_id)
         ego_vehicle_speed      = ego.get('speed')
         _,front_rgb = input_data.get(FRONT_CAM)
-        print(np.shape(front_rgb))
-        image = Image.fromarray(front_rgb, 'RGBA')
-        image.save(f'/home/ddmonster/MLMAS_Project/imgdata/saved_image_{FRONT_CAM}_{timestamp}.png')
+        def save_img():
+            print(np.shape(front_rgb))
+            image = Image.fromarray(front_rgb, 'RGBA')
+            image.save(f'/home/ddmonster/MLMAS_Project/imgdata/lav/saved_image_{FRONT_CAM}_{timestamp}.png')
+        # self.count_run.register(save_img)
+        # self.count_run.call()
+        self.last_lane_pos = self.lane_pos
+        self.lane_pos = self.lane_detect_model.get_pos(front_rgb)
+        print(self.lane_pos)
         #========= Ego Vehicle info ===================
         if self.ego_car_diminsions == None:
             self.ego_car_diminsions = self._vehicle.bounding_box.extent
@@ -219,6 +245,7 @@ class Orchestrator(AutonomousAgent):
                         or self.prev_traffic_light_detection != self.traffic_light_detection)
                         )
                         )
+        cond = cond or (self.lane_pos[0] != -1 or self.lane_pos[1] != -1)
         self.prev_traffic_light_detection = self.traffic_light_detection
 
         return cond

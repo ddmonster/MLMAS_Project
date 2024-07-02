@@ -110,6 +110,15 @@ public class BeliefsHandler extends Thread {
 							+ typ + "," + state + "," + x + "," + y + "," + d + "," + inBox + ")"));
 
 				}
+				// get lane detection data
+				if (data_jsn.containsKey("lane_pos")) {
+					String left = data_jsn.getJsonObject("lane_pos").get("left").toString();
+					String right = data_jsn.getJsonObject("lane_pos").get("right").toString();
+					String last_left = data_jsn.getJsonObject("lane_pos").get("last_left").toString();
+					String last_right = data_jsn.getJsonObject("lane_pos").get("last_right").toString();
+					this.env.addPercept("carla_control",Literal.parseLiteral("lane_pos("+left+","+right+","+last_left+","+last_right+")"));
+
+				}
 
 				removePercept(current_frame);
 				// Activate Jason Plan
@@ -163,7 +172,8 @@ public class BeliefsHandler extends Thread {
 			this.env.removePerceptsByUnif("carla_control", Literal.parseLiteral("l(" + frm + ",_,_,_,_)"));
 			this.env.removePerceptsByUnif("carla_control",
 					Literal.parseLiteral("S" + this.scenario + "::startP(" + frm + ")"));
-
+			this.env.removePerceptsByUnif("carla_control", Literal.parseLiteral("lane_pos(_,_,_,_)"));
+			
 			this.q_beliefs_frames.remove(frm);
 			frm = this.q_beliefs_frames.floor(frame_to_remove);
 		}

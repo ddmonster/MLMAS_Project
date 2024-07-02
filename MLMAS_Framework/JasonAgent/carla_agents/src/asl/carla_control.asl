@@ -37,6 +37,21 @@
  // That are intend or try to cross a road or they are already
  // in front of the car.
 
++!start(F): lane_pos(L,R,LL,LR) <- .print("lane pos: ", L,"  ", R, " ",LL , " ", LR).
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 5 <- .print("approach left lane").
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -5 <- .print("approach right lane").
+
+// avoid collision crash on right lane 
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -10 & ml_control(F,_,St,_,_,_)
+				<- control(0, 0.0, 0.0, (St-0.1), false, false, (Sp)); // turn left slightly
+					.print("avoid crash on  right lane").
+
+// avoid collision crash on left lane 
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 10 & ml_control(F,_,St,_,_,_)
+				<- control(0, 0.0, 0.0, (St+0.1), false, false, (Sp)); // turn right slightly
+					.print("avoid crash on  left lane").
+
+
 +!start(F): f(F,X,_,_, MinY) & MinY < 2.0 & X < 4.5
 			& info(F,Sp) & Sp > 0.5 & block(Nf, M) & Nf < M
 		<-   control(2, 0.0, 0.0, 1.0, false, false, (Sp*3)); // hard break
@@ -231,5 +246,9 @@
 			  -+stopCount(0).
 
 
+			
 // 15. a belied activated when there are new beliefs updated to be considered.
 +S::startP(F) <- !start(F).
+
+
+// lane detect 
