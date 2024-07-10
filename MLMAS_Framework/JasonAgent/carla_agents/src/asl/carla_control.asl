@@ -33,29 +33,75 @@
 //control(MrtricsType,throttle, steer, brake, hand_brake, reverse, repeat)
 
 
- // 1. A plan to avoid [close obstacles] (Cars, people, ..etc) collision
- // That are intend or try to cross a road or they are already
- // in front of the car.
 
-+!start(F): lane_pos(L,R,LL,LR) <- .print("lane pos: ", L,"  ", R, " ",LL , " ", LR).
-+!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 5 <- .print("approach left lane").
-+!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -5 <- .print("approach right lane").
+//+!start(F): lane_pos(L,R,LL,LR) <- .print("lane pos: ", L,"  ", R, " ",LL , " ", LR).
+//+!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 5 <- .print("approach left lane").
+//+!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -5 <- .print("approach right lane").
 
 // avoid collision crash on right lane 
-+!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -10 & ml_control(F,_,St,_,_,_)
-				<- control(0, 0.0, 0.0, (St-0.1), false, false, (Sp)); // turn left slightly
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -10 & ml_control(F,Th,St,Br,_,_)
+				<- control(0, Th, (St+0.1), Br ,false, false, 2); // turn right slightly
 					.print("avoid crash on  right lane").
 
 // avoid collision crash on left lane 
-+!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 10 & ml_control(F,_,St,_,_,_)
-				<- control(0, 0.0, 0.0, (St+0.1), false, false, (Sp)); // turn right slightly
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 10 & ml_control(F,Th,St,Br,_,_) 
+				<- control(0, Th, (St-0.1), Br ,false, false, 2 );  // turn left slightly
 					.print("avoid crash on  left lane").
 
+// Good practice to Keep the vehicle in the middle of the road while the vehicle goes straight ahead and stay closer to the left side
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -10 &  ml_control(F,Th,St,Br,_,_)  & St == 0
+				<- control(0, Th, (St-0.1), Br ,false, false, 2); // turn right slightly
+					.print("Keep the vehicle in the middle of the road").
 
+// Good practice to Keep the vehicle in the middle of the road while the vehicle goes straight ahead and stay closer to the right side
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 10 &  ml_control(F,Th,St,Br,_,_)  & St == 0
+				<- control(0, Th, (St+0.1), Br ,false, false, 2); // turn left slightly
+					.print("Keep the vehicle in the middle of the road").
+
+ // A plan to predict a very close car from the [Left side].
+ //    and to keep distance from it.
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) < -10 &  ml_control(F,Th,St,Br,_,_) & l(F,X,_,_,MinY) &  MinY < 1.9 & math.abs(X) < 1.9
+		& l(F2,_,_,_,MinY2) & (F-F2) <= 2 & MinY < MinY2
+//		& ml_control(F,Tr,St,Br,_,_) & St < -0.05
+		<-   control(2, Th ,(St + 0.1), Br, false, false, 1); // turn right slightly
+			.print("turn right slightly while car is coming from left ", F).
+
+ // A plan to predict a very close car from the [Right side].
+ //    and to keep distance from it.
++!start(F): lane_pos(L,R,LL,LR) & L \== -1 & R \== -1 & (L - LL) > 10 &  ml_control(F,Th,St,Br,_,_) & l(F,X,_,_,MinY) &  MinY < 1.9 & math.abs(X) < 1.9
+		& l(F2,_,_,_,MinY2) & (F-F2) <= 2 & MinY < MinY2
+//		& ml_control(F,Tr,St,Br,_,_) & St < -0.05
+		<-   control(2, Th ,(St - 0.1), Br, false, false, 1); // turn left slightly
+			.print("turn left slightly while car is coming from right ", F).
+
+//A plan to avoid [Far obstacles] collision while changing the lane to the left 
++!start(F): lane_pos(L,R,LL,RR) & L \== -1 & R \== -1 & L <= 40 & f(F,X,Y,_, MinY) & f(F2,_,Y2,_, MinY2) & (F-F2) <= 2
+			& Y < 0 & Y2 < 0 &  MinY > 2.0 & X < 6 & Y > -4
+			& (MinY2 - MinY) > 0.15  & ml_control(F,_,St,_,_,_) & St > - 0.1
+			& info(F,Sp)
+		<-   control(1, 0.0, 0.0, 1.0, false, false, (Sp*3)); // hard break
+			.print("===Avoid Road [Far Crossing (L)] Collision while changing the lane to the left=== : ", Sp).
+
+
+//A plan to avoid [Far obstacles] collision while changing the lane to the right 
++!start(F): lane_pos(L,R,LL,RR) & L \== -1 & R \== -1 & R <= 40 & f(F,X,Y,_, MinY) & f(F2,_,Y2,_, MinY2) & (F-F2) <= 2
+			& Y > 0 & Y2 > 0 &  MinY > 2.0 & X < 6 & Y < 4
+			& (MinY2 - MinY) > 0.15 & ml_control(F,_,St,_,_,_) & St < 0.1
+			& info(F,Sp)
+		<-   control(1, 0.0, 0.0, 1.0, false, false, (Sp*3)); // hard break
+			.print("===Avoid Road [Far Crossing (R)] Collision while changing the lane to the right===: ", Sp).
+
+
+
+
+ // 1. A plan to avoid [close obstacles] (Cars, people, ..etc) collision
+ // That are intend or try to cross a road or they are already
+ // in front of the car.
 +!start(F): f(F,X,_,_, MinY) & MinY < 2.0 & X < 4.5
 			& info(F,Sp) & Sp > 0.5 & block(Nf, M) & Nf < M
 		<-   control(2, 0.0, 0.0, 1.0, false, false, (Sp*3)); // hard break
 			 .print("avoid [close obstacles] (Cars, people, ..etc) collision", Sp).
+
  // 2. A plan to avoid [Far obstacles] collision
  // That are moving toward the car from the [Right side].
 +!start(F): f(F,X,Y,_, MinY) & f(F2,_,Y2,_, MinY2) & (F-F2) <= 2
